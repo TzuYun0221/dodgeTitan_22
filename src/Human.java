@@ -15,7 +15,7 @@ public class Human {
 	int fresh = GamePanel.FRESH; //刷新時間
 	
 	boolean jumpState = false; //跳躍狀態
-	int jumpHeight = 100; //跳躍的高度
+	int jumpHeight = 130; //跳躍的高度 (暫定低跳)
 	final int LOWEST_Y = 250; //最低
 	int jumpValue = 0; //跳躍增變量(每次移動高度)
 	
@@ -29,9 +29,6 @@ public class Human {
     //////////////二段跳
 	
 	
-	
-	
-	///二段跳
 	
 	//建構子方法
 	public Human()  {
@@ -52,12 +49,15 @@ public class Human {
 			step(); 
 			if (jumpState) { //當起跳時
 				if (y >= LOWEST_Y) { //如果玩家高度大於水平面就上升
+					
 					jumpValue=-10;
+					
 				}
-				if (y <= LOWEST_Y - jumpHeight) { 
-					//如果玩家高度到達指定高度就下降
-					jumpValue=12; //為符合掉落的時間比跳耀的時間快 再設一個跳耀增變量8
+				if (y <= LOWEST_Y - jumpHeight) {//如果玩家高度到達指定高度就下降
+					
 					jumpValue=10;
+					jumpValue=8;//為符合掉落的時間比跳耀的時間快 再設一個跳耀增變量8
+					
 				}
 				//每次改變玩家高度
 				y+=jumpValue;

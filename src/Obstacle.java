@@ -12,6 +12,8 @@ public class Obstacle {
 	BufferedImage colossal_titan, pure_titan; //障礙物圖片3張
 	int speed;
 	
+	int score = 10;
+	
 	//建構子方法
 	public Obstacle() {
 		try {
@@ -50,6 +52,14 @@ public class Obstacle {
 			return new Rectangle(x+6, y, image.getWidth()-6, image.getHeight());
 		}
 	}
+	
+	//方法
+	public int getScore() {
+		int tmp = score; //讓每個障礙只能計算一次得分
+		score = 0; //讓每個障礙只能計算一次得分
+		return tmp;
+	}
+	
 	
 	
 	

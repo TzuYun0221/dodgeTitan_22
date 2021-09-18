@@ -91,22 +91,22 @@ public class GamePanel extends JPanel implements KeyListener{
 			//發生碰撞
 			if(o.getBounds().intersects(player.getFrontBounds())) {
 				gameOver();
-			}/*else {
-				if (o.x < player.x) {
-					score ++;
-					
+			} else { //以跳過障礙物數量方式計分
+				if (o.x < player.x) { //如果障礙物數x軸座標小於玩家x座標
+					score += o.getScore(); //加分
 				}
-			}*/
+			}
 		}
 		
 		addObstacleTimer += FRESH; //讓添加障礙物計時器計時 
 		addScoreTimer += FRESH; //讓添加得分計時器計時 
 		
-		//計算得分
-		if (addScoreTimer >= 500) {
+		//以計時方式計算得分 (請忽略)
+		/*if (addScoreTimer >= 500) {
 			score +=1;
 			addScoreTimer = 0;
-		}
+		}*/
+		
 		G2.setColor(Color.black);
 		G2.setFont(new Font("黑體", Font.BOLD, 24));
 		G2.drawString(String.format("%05d",score), 700 ,30);
