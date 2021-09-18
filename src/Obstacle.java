@@ -32,7 +32,7 @@ public class Obstacle {
 		
 		speed = BackgroundImage.speed;
 		x = 800;
-		y = 160;
+		y = 245;
 		
 	}
 	
@@ -45,9 +45,9 @@ public class Obstacle {
 	//¤èªk
 	public Rectangle getBounds() {
 		if (image == pure_titan) {
-			return new Rectangle(x+10, y+3, image.getWidth()-15, image.getHeight());
+			return new Rectangle(x+10, y, image.getWidth()-15, image.getHeight());
 		} else {
-			return new Rectangle(x+6, y-80, image.getWidth()-6, image.getHeight()/*+100*/);
+			return new Rectangle(x+6, y, image.getWidth()-6, image.getHeight());
 		}
 	}
 	

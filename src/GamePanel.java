@@ -67,8 +67,8 @@ public class GamePanel extends JPanel implements KeyListener{
 		
 		
 		Rectangle rec = player.getFrontBounds(); 
-		//G2.setColor(Color.black);
-		//G2.fillRect(rec.x, rec.y, rec.width, rec.height);
+		G2.setColor(Color.black);
+		G2.fillRect(rec.x, rec.y, rec.width, rec.height);
 		G2.drawImage(player.image, player.x, player.y, this); //繪製玩家 player物件的座標
 		
 		if(addObstacleTimer >= 800) {
@@ -84,8 +84,8 @@ public class GamePanel extends JPanel implements KeyListener{
 			o.move();
 			
 			rec = o.getBounds(); 
-			//G2.setColor(Color.black);
-			//G2.fillRect(rec.x, rec.y, rec.width, rec.height);
+			G2.setColor(Color.black);
+			G2.fillRect(rec.x, rec.y, rec.width, rec.height);
 			G2.drawImage(o.image, o.x, o.y, this); //繪製障礙物 o物件的座標
 			
 			//發生碰撞

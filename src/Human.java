@@ -16,7 +16,7 @@ public class Human {
 	
 	boolean jumpState = false; //跳躍狀態
 	int jumpHeight = 100; //跳躍的高度
-	final int LOWEST_Y = 165; //最低//250
+	final int LOWEST_Y = 250; //最低
 	int jumpValue = 0; //跳躍增變量(每次移動高度)
 	
 	
