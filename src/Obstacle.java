@@ -47,9 +47,9 @@ public class Obstacle {
 	//¤èªk
 	public Rectangle getBounds() {
 		if (image == pure_titan) {
-			return new Rectangle(x+10, y, image.getWidth()-15, image.getHeight());
+			return new Rectangle(x+10, y-10, image.getWidth()-15, image.getHeight()+10);
 		} else {
-			return new Rectangle(x+6, y, image.getWidth()-6, image.getHeight());
+			return new Rectangle(x+6, y-80, image.getWidth()-6, image.getHeight()+80);
 		}
 	}
 	

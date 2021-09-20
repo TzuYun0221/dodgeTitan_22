@@ -14,19 +14,19 @@ public class Human {
 	int stepTimer = 0; //計時器
 	int fresh = GamePanel.FRESH; //刷新時間
 	
-	boolean jumpState = false; //跳躍狀態
-	int jumpHeight = 130; //跳躍的高度 (暫定低跳)
 	final int LOWEST_Y = 250; //最低
 	int jumpValue = 0; //跳躍增變量(每次移動高度)
+	////低跳
+	boolean jumpState1 = false; //跳躍狀態
+	int jumpHeight = 130; //跳躍的高度 (暫定低跳)
+	////高跳
+	boolean jumpState2 = false; //跳躍狀態
+	int jumpHeight2 = 200; //跳躍的高度 (暫定高跳)
 	
-	
-	//////////////////二段跳
-	float speed = 5f;
-	float jumpSpeed = 5f;
-	boolean isGround;
-	boolean isJump;
-	int jumpHeight2 = 150;
-    //////////////二段跳
+			//float speed = 5f; (請忽略)
+			//float jumpSpeed = 5f;
+			//boolean isGround;
+			//boolean isJump;
 	
 	
 	
@@ -47,7 +47,9 @@ public class Human {
 	//方法 
 		public void move() {//移動
 			step(); 
-			if (jumpState) { //當起跳時
+			
+			//low
+			if (jumpState1) { //當起跳時
 				if (y >= LOWEST_Y) { //如果玩家高度大於水平面就上升
 					
 					jumpValue=-10;
@@ -62,10 +64,28 @@ public class Human {
 				//每次改變玩家高度
 				y+=jumpValue;
 				if (y >= LOWEST_Y) {
-					jumpState = false;
+					jumpState1 = false;
 				}
 			} 
-	}
+			
+			//height
+			if (jumpState2) { //當起跳時
+				if (y >= LOWEST_Y) { //如果玩家高度大於水平面就上升
+					jumpValue=-15;
+				}
+				if (y <= LOWEST_Y - jumpHeight2) { 
+					//如果玩家高度到達指定高度就下降
+					jumpValue=15; //為符合掉落的時間比跳耀的時間快 再設一個跳耀增變量8
+					jumpValue=8;
+				}
+				//每次改變玩家高度
+				y+=jumpValue;
+				if (y >= LOWEST_Y) {
+					jumpState2 = false;
+				}
+			} 
+		}
+	
 	
 	
 	//方法
@@ -81,29 +101,13 @@ public class Human {
 	}
 	
 	//方法
-	public void jump() {//跳躍
-		jumpState = true;
+	public void lowJump() {//跳躍
+		jumpState1 = true;
 	}
-	/*
-	public void doublejump() {//二段跳躍
-		
-		if (jumpState) { //當起跳時
-			if (y >= LOWEST_Y) { //如果玩家高度大於水平面就上升
-				jumpValue=-20;
-			}
-			if (y <= LOWEST_Y - jumpHeight2) { 
-				//如果玩家高度到達指定高度就下降
-				jumpValue=20; //為符合掉落的時間比跳耀的時間快 再設一個跳耀增變量8
-				
-			}
-			//每次改變玩家高度
-			y+=jumpValue;
-			if (y >= LOWEST_Y) {
-				jumpState = false;
-			}
-		} 
+	
+	public void hightJump() {//二段跳躍
+		jumpState2 = true;
 	}
-	*/
 	
 	
 	//方法

@@ -13,6 +13,7 @@ import java.io.IOException; //第30行
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel; //繼承面板 第7行
 //import java.awt.Color;
 
@@ -74,7 +75,7 @@ public class GamePanel extends JPanel implements KeyListener{
 		if(addObstacleTimer >= 800) {
 			Random r = new Random();
 			int a = r.nextInt(100); //100裡隨機數字
-			if(a > 60) {
+			if(a > 50) { //控制障礙物出現頻率
 				list.add(new Obstacle());
 			}
 			addObstacleTimer = 0;
@@ -135,22 +136,19 @@ public class GamePanel extends JPanel implements KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {//按鍵的類型
 		// TODO Auto-generated method stub
-		
 	}
 	//方法
 	@Override
 	public void keyPressed(KeyEvent e) {//按鍵按下
 		//System.out.println(e.getKeyChar()); 獲取鍵盤輸入
-		int code = e.getKeyChar(); //獲取按下的鍵盤編碼
+		int code = e.getKeyCode(); //獲取按下的鍵盤編碼
 		
-		if (code == KeyEvent.VK_UP); {
-			player.jump();
+		if (code == KeyEvent.VK_UP) {
+			player.lowJump();
+		} else if (code == KeyEvent.VK_RIGHT) {
+			player.hightJump();
 		}
-		/*
-		if (code == (KeyEvent.VK_RIGHT)); {
-			player.doublejump();
-		}
-		*/
+		
 		
 	}
 	//方法
