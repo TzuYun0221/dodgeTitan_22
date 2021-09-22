@@ -75,7 +75,7 @@ public class GamePanel extends JPanel implements KeyListener{
 		if(addObstacleTimer >= 800) {
 			Random r = new Random();
 			int a = r.nextInt(100); //100裡隨機數字
-			if(a > 50) { //控制障礙物出現頻率
+			if(a > 60) { //控制障礙物出現頻率
 				list.add(new Obstacle());
 			}
 			addObstacleTimer = 0;
@@ -158,18 +158,12 @@ public class GamePanel extends JPanel implements KeyListener{
 		
 	}
 	
+	
+	
 	//方法
 	public void gameOver() {
 		finish = true;
 	}
-	
-	
-	
-
-	
-	
-	
-	
 	
 	
 	

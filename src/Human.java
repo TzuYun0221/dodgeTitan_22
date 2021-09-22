@@ -21,7 +21,7 @@ public class Human {
 	int jumpHeight = 130; //跳躍的高度 (暫定低跳)
 	////高跳
 	boolean jumpState2 = false; //跳躍狀態
-	int jumpHeight2 = 200; //跳躍的高度 (暫定高跳)
+	int jumpHeight2 = 250; //跳躍的高度 (暫定高跳)
 	
 			//float speed = 5f; (請忽略)
 			//float jumpSpeed = 5f;
@@ -58,7 +58,7 @@ public class Human {
 				if (y <= LOWEST_Y - jumpHeight) {//如果玩家高度到達指定高度就下降
 					
 					jumpValue=10;
-					jumpValue=8;//為符合掉落的時間比跳耀的時間快 再設一個跳耀增變量8
+					jumpValue=9;//為符合掉落的時間比跳耀的時間快 再設一個跳耀增變量8
 					
 				}
 				//每次改變玩家高度

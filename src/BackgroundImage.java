@@ -21,7 +21,7 @@ public class BackgroundImage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		image = new BufferedImage(800, 300, BufferedImage.TYPE_INT_BGR);
+		image = new BufferedImage(800, 500, BufferedImage.TYPE_INT_BGR);
 		g2 = image.createGraphics();
 		image1_x1 = 0;
 		image2_x1 = 800;

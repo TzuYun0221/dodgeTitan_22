@@ -9,8 +9,8 @@ import javax.imageio.ImageIO;
 public class Obstacle {
 	int x,y; //障礙物座標 
 	BufferedImage image; //障礙物圖片
-	BufferedImage colossal_titan, pure_titan; //障礙物圖片3張
-	int speed;
+	BufferedImage colossal_titan, pure_titan; //障礙物圖片2張
+	int speed; //圖片速度
 	
 	int score = 10;
 	
@@ -45,7 +45,7 @@ public class Obstacle {
 	}
 	
 	//方法
-	public Rectangle getBounds() {
+	public Rectangle getBounds() { //調整檢測碰撞方塊大小
 		if (image == pure_titan) {
 			return new Rectangle(x+10, y-10, image.getWidth()-15, image.getHeight()+10);
 		} else {
