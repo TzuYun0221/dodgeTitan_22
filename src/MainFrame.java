@@ -16,8 +16,8 @@ import javax.swing.JRadioButtonMenuItem;
 //主窗體類別
 public class MainFrame extends JFrame implements ActionListener{
 	GamePanel p; //宣告GamePanel類別 帶進p變數(開始將面板放置窗體)
-	JMenuBar mb = new JMenuBar(); 
-	JMenuItem rule;  
+	JMenuBar mb = new JMenuBar();  //下拉式選單
+	JMenuItem Begin,rule;  
 	
 	//建構子方法
 	public MainFrame() {
@@ -26,14 +26,25 @@ public class MainFrame extends JFrame implements ActionListener{
 		
 		  
 		//建立下拉式選單
-		JMenu directions = new JMenu("說明");
+		JMenu start = new JMenu("遊戲(O)");
+		JMenu directions = new JMenu("說明(L)");
 		
+		// 加入"遊戲"選項
+		start.setMnemonic(KeyEvent.VK_O);
+		start.add(Begin = new JMenuItem("遊戲開始(S)", KeyEvent.VK_S));
+				
 		//加入"說明"選項
-		directions.setMnemonic(KeyEvent.VK_Z);
+		directions.setMnemonic(KeyEvent.VK_L);
 		directions.add(rule = new JMenuItem("規則(R)", KeyEvent.VK_R));
 		rule.addActionListener(this);
+		
+		// 加入監聽
+		Begin.addActionListener(this);
+		
+		
 		//加入下拉式選單
 		setJMenuBar(mb);
+		mb.add(start);
 		mb.add(directions);
 		 
 		
@@ -55,22 +66,32 @@ public class MainFrame extends JFrame implements ActionListener{
 		frame.setBounds(340, 150, 820, 365
 				); //設定窗體大小365
 		frame.setVisible(true);
-		new MainFrame();    
+		new MainFrame();  
+		
+		frame.startGame();  //15
 		
 		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == Begin)
+		{
+			FreshThread c = new FreshThread(p);
+			c.start();
+		}
 		if (e.getSource() == rule)
 		{
-			JOptionPane.showOptionDialog(null, "測試測試",
+			JOptionPane.showOptionDialog(null, "按下方向鍵[Up]來躲避普通巨人"+"\n"+"連按方向鍵[Up]使出二段跳來躲避超大型巨人",
 					null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 		}
 	}
 
 	
-	
+	//開始畫面
+		public void startGame() {
+			GamePanel.startGame();
+		}
 	
 	
 	//重新開始

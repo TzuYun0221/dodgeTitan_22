@@ -20,15 +20,13 @@ public class FreshThread extends Thread{
 				e.printStackTrace();
 			} //休眠
 		}
-		
-		
-		
+	
+	
 		Container c = p.getParent();
 		while (!(c instanceof MainFrame)) { //當c的父容器不是MainFrame，繼續找直到找到為止
 			c = c.getParent(); //找父容器
 		}
 		MainFrame f =(MainFrame) c; //將c強制轉換成(MainFrame)類別
-		
 		
 		
 		

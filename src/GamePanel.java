@@ -21,7 +21,7 @@ import javax.swing.JPanel; //繼承面板 第7行
 
 
 //主面板類別
-public class GamePanel extends JPanel implements KeyListener{
+public class GamePanel extends JPanel implements KeyListener {
 	BufferedImage Image; //宣告主圖片(指的是panel原有黑色底) 帶進Image變數
 	Graphics2D G2; //宣告繪圖 帶進G2變數
 	Human player; //宣告人類類別 帶進player變數
@@ -38,6 +38,9 @@ public class GamePanel extends JPanel implements KeyListener{
 	int score = 0; //宣告得分
 	int addScoreTimer = 0; //得分計時器
 	
+	private Thread thread; //15號的
+	
+	
 	//建構子方法
 	public GamePanel() {
 		Image = new BufferedImage(800,300,BufferedImage.TYPE_INT_BGR); //創建Image物件設置主圖片(長寬)
@@ -53,7 +56,14 @@ public class GamePanel extends JPanel implements KeyListener{
 		list.add(new Obstacle());
 		
 		FreshThread t = new FreshThread(this); //宣告FreshThread類別 創建t物件 刷新多執行緒
-		t.start();
+		
+		thread = new FreshThread(this); //15號的
+	}
+	
+	//15號的
+	public void startGame() {
+		thread.start(); 
+		
 	}
 	
 	//方法
