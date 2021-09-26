@@ -33,12 +33,10 @@ public class GamePanel extends JPanel implements KeyListener {
 	//Obstacle o = new Obstacle(); //宣告障礙類別 以障礙障礙建構子方法 創建O物件
 	//泛型 在泛型中寫了指定類別 list中只能放那個指定類別
 	java.util.List<Obstacle> list = new ArrayList<Obstacle>(); //障礙物同夥
-	int addObstacleTimer = 0;
+	int addObstacleTimer = 0; //障礙物計時器
 	
 	int score = 0; //宣告得分
 	int addScoreTimer = 0; //得分計時器
-	
-	private Thread thread; //15號的
 	
 	
 	//建構子方法
@@ -56,14 +54,7 @@ public class GamePanel extends JPanel implements KeyListener {
 		list.add(new Obstacle());
 		
 		FreshThread t = new FreshThread(this); //宣告FreshThread類別 創建t物件 刷新多執行緒
-		
-		thread = new FreshThread(this); //15號的
-	}
-	
-	//15號的
-	public void startGame() {
-		thread.start(); 
-		
+		t.start();
 	}
 	
 	//方法
@@ -71,7 +62,7 @@ public class GamePanel extends JPanel implements KeyListener {
 	private void paintImage() {
 		player.move(); //讓玩家踏步 (每隔十分之一秒換一張圖)
 		background.roll(); //讓背景圖滾動
-		//o.move(); ////讓障礙物移動
+		///o.move(); ////讓障礙物移動
 		
 		
 		G2.drawImage(background.image, 0, 0, this); //繪製背景 background物件的座標
@@ -79,12 +70,12 @@ public class GamePanel extends JPanel implements KeyListener {
 		
 		Rectangle rec = player.getFrontBounds(); 
 		G2.setColor(Color.black);
-		G2.fillRect(rec.x, rec.y, rec.width, rec.height);
+		//G2.fillRect(rec.x, rec.y, rec.width, rec.height);
 		G2.drawImage(player.image, player.x, player.y, this); //繪製玩家 player物件的座標
 		
-		if(addObstacleTimer >= 800) {
+		if(addObstacleTimer >= 1300) {
 			Random r = new Random();
-			int a = r.nextInt(100); //100裡隨機數字
+			int a = r.nextInt(100); //100裡隨機出現一個數字，代表a
 			if(a > 60) { //控制障礙物出現頻率
 				list.add(new Obstacle());
 			}
@@ -96,10 +87,10 @@ public class GamePanel extends JPanel implements KeyListener {
 			
 			rec = o.getBounds(); 
 			G2.setColor(Color.black);
-			G2.fillRect(rec.x, rec.y, rec.width, rec.height);
+			//G2.fillRect(rec.x, rec.y, rec.width, rec.height);
 			G2.drawImage(o.image, o.x, o.y, this); //繪製障礙物 o物件的座標
 			
-			//發生碰撞
+			//如果發生碰撞
 			if(o.getBounds().intersects(player.getFrontBounds())) {
 				gameOver();
 			} else { //以跳過障礙物數量方式計分
@@ -142,6 +133,12 @@ public class GamePanel extends JPanel implements KeyListener {
 	public boolean isFinish() {
 		return finish;
 	}
+	
+	//方法
+		public void gameOver() {
+			finish = true;
+		}
+		
 	//方法
 	@Override
 	public void keyTyped(KeyEvent e) {//按鍵的類型
@@ -170,10 +167,6 @@ public class GamePanel extends JPanel implements KeyListener {
 	
 	
 	
-	//方法
-	public void gameOver() {
-		finish = true;
-	}
 	
 	
 	

@@ -47,9 +47,9 @@ public class Obstacle {
 	//方法
 	public Rectangle getBounds() { //調整檢測碰撞方塊大小
 		if (image == pure_titan) {
-			return new Rectangle(x+10, y-10, image.getWidth()-15, image.getHeight()+10);
+			return new Rectangle(x, y, image.getWidth(), image.getHeight());
 		} else {
-			return new Rectangle(x+6, y-80, image.getWidth()-6, image.getHeight()+80);
+			return new Rectangle(x, y, image.getWidth(), image.getHeight());
 		}
 	}
 	

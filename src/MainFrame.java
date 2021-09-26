@@ -26,12 +26,12 @@ public class MainFrame extends JFrame implements ActionListener{
 		
 		  
 		//建立下拉式選單
-		JMenu start = new JMenu("遊戲(O)");
+		//JMenu start = new JMenu("遊戲(O)");
 		JMenu directions = new JMenu("說明(L)");
 		
 		// 加入"遊戲"選項
-		start.setMnemonic(KeyEvent.VK_O);
-		start.add(Begin = new JMenuItem("遊戲開始(S)", KeyEvent.VK_S));
+		//start.setMnemonic(KeyEvent.VK_O);
+		//start.add(Begin = new JMenuItem("遊戲開始(S)", KeyEvent.VK_S));
 				
 		//加入"說明"選項
 		directions.setMnemonic(KeyEvent.VK_L);
@@ -39,12 +39,12 @@ public class MainFrame extends JFrame implements ActionListener{
 		rule.addActionListener(this);
 		
 		// 加入監聽
-		Begin.addActionListener(this);
+		//Begin.addActionListener(this);
 		
 		
 		//加入下拉式選單
 		setJMenuBar(mb);
-		mb.add(start);
+		//mb.add(start);
 		mb.add(directions);
 		 
 		
@@ -66,32 +66,20 @@ public class MainFrame extends JFrame implements ActionListener{
 		frame.setBounds(340, 150, 820, 365
 				); //設定窗體大小365
 		frame.setVisible(true);
-		new MainFrame();  
 		
-		frame.startGame();  //15
 		
 		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == Begin)
-		{
-			FreshThread c = new FreshThread(p);
-			c.start();
-		}
 		if (e.getSource() == rule)
 		{
-			JOptionPane.showOptionDialog(null, "按下方向鍵[Up]來躲避普通巨人"+"\n"+"連按方向鍵[Up]使出二段跳來躲避超大型巨人",
+			JOptionPane.showOptionDialog(null, "按下方向鍵[UP]來躲避普通巨人"+"\n"+"按方向鍵[RIGHT]使出二段跳來躲避超大型巨人",
 					null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 		}
 	}
 
-	
-	//開始畫面
-		public void startGame() {
-			GamePanel.startGame();
-		}
 	
 	
 	//重新開始
